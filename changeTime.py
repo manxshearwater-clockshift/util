@@ -1,4 +1,10 @@
 import os
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("directory", help="set the directory",
+                    type=str)
+args = parser.parse_args()
 
 def get_sample_time(file_name):
     split_list = file_name.split("_")
@@ -33,9 +39,9 @@ def get_sample_time(file_name):
     newName = split_list[0] + "_" + split_list[1] + "_" + split_list[2] + "_" + split_list[3] + "_" + str(date) + "_" + split_list[5] + "_" + str(hours) + str(minutes) + str(seconds) + ".npy"
     return newName
 
-
-path = "/home/yorick/ManxShearwaterProject/results/b73"
-files = os.listdir(path)
-for file_name in files:
-    new_file_name = get_sample_time(file_name)
-    os.system("mv " + path + "/" + file_name + " " + path + "/" + new_file_name)
+if __name__ == "__main__":
+	path = args.directory
+	files = os.listdir(path)
+	for file_name in files:
+	    new_file_name = get_sample_time(file_name)
+	    os.system("mv " + path + "/" + file_name + " " + path + "/" + new_file_name)
