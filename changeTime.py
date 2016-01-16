@@ -26,12 +26,9 @@ def getSampleTime(fileName):
             offsetDate = int(hours/24)
             hours = hours % 24
             date = int(date) + offsetDate
-    if hours < 10:
-        hours = str("0") + str(hours)
-    if minutes < 10:
-        minutes = str("0") + str(minutes)
-    if seconds < 10:
-        seconds = str("0") + str(seconds)
+    hours = str(hours).zfill(2)
+    minutes = str(minutes).zfill(2)
+    seconds = str(seconds).zfill(2)
 
     newName = splitList[0] + "_" + splitList[1] + "_" + splitList[2] + "_" + splitList[3] + "_" + str(date) + "_" + splitList[5] + "_" + str(hours) + str(minutes) + str(seconds) + ".npy"
     return newName
