@@ -1,41 +1,41 @@
 import os
 
-def getSampleTime(fileName):
-    splitList = fileName.split("_")
-    date = splitList[4]
+def get_sample_time(file_name):
+    split_list = file_name.split("_")
+    date = split_list[4]
 
     #starting time of day recording
-    startTime = splitList[6]
+    start_time = split_list[6]
 
     #minutes from startingtime
-    minutesOffset = splitList[7]
-    m = minutesOffset.index("m")
-    minutesOffset = minutesOffset[0:m] + minutesOffset[m+1:]
-    minutesOffset = int(minutesOffset[0:3])
+    minutes_offset = split_list[7]
+    m = minutes_offset.index("m")
+    minutes_offset = minutes_offset[0:m] + minutes_offset[m+1:]
+    minutes_offset = int(minutes_offset[0:3])
 
-    hours = int(startTime[0] + startTime[1])
-    minutes = int(startTime[2] + startTime[3])
-    seconds = int(startTime[4] + startTime[5])
+    hours = int(start_time[0] + start_time[1])
+    minutes = int(start_time[2] + start_time[3])
+    seconds = int(start_time[4] + start_time[5])
 
-    minutes = minutes + minutesOffset
+    minutes = minutes + minutes_offset
     if minutes >= 60:
-        offsetHours = int(minutes/60)
+        offset_hours = int(minutes/60)
         minutes = minutes % 60        
-        hours = hours + offsetHours
+        hours = hours + offset_hours
         if hours >= 24:
-            offsetDate = int(hours/24)
+            offset_date = int(hours/24)
             hours = hours % 24
-            date = int(date) + offsetDate
+            date = int(date) + offset_date
     hours = str(hours).zfill(2)
     minutes = str(minutes).zfill(2)
     seconds = str(seconds).zfill(2)
 
-    newName = splitList[0] + "_" + splitList[1] + "_" + splitList[2] + "_" + splitList[3] + "_" + str(date) + "_" + splitList[5] + "_" + str(hours) + str(minutes) + str(seconds) + ".npy"
+    newName = split_list[0] + "_" + split_list[1] + "_" + split_list[2] + "_" + split_list[3] + "_" + str(date) + "_" + split_list[5] + "_" + str(hours) + str(minutes) + str(seconds) + ".npy"
     return newName
 
 
 path = "/home/yorick/ManxShearwaterProject/results/b73"
 files = os.listdir(path)
-for fileName in files:
-    newFilename = getSampleTime(fileName)
-    os.system("mv " + path + "/" + fileName + " " + path + "/" + newFilename)
+for file_name in files:
+    new_file_name = get_sample_time(file_name)
+    os.system("mv " + path + "/" + file_name + " " + path + "/" + new_file_name)
