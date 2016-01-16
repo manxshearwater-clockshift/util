@@ -35,8 +35,8 @@ def getSampleTime(fileName):
     return newName
 
 
-path =  "/Volumes/Untitled/b73analyzed"
+path =  "/home/yorick/ManxShearwaterProject/results/b73"
 files = os.listdir(path)
 for fileName in files:
     newFilename = getSampleTime(fileName)
-    os.system("mv " + rootfolder + "/" + fileName + " " + rootfolder + "/" + newFilename)
+    os.system("mv " + path + "/" + fileName + " " + path + "/" + newFilename)
