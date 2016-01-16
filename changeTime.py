@@ -9,8 +9,10 @@ def getSampleTime(fileName):
 
     #minutes from startingtime
     minutesOffset = splitList[7]
+    m = minutesOffset.index("m")
+    minutesOffset = minutesOffset[0:m] + minutesOffset[m+1:]
     minutesOffset = int(minutesOffset[0:3])
-  
+
     hours = int(startTime[0] + startTime[1])
     minutes = int(startTime[2] + startTime[3])
     seconds = int(startTime[4] + startTime[5])
@@ -35,8 +37,8 @@ def getSampleTime(fileName):
     return newName
 
 
-path =  "/Volumes/Untitled/b73analyzed"
+path = "/home/yorick/ManxShearwaterProject/results/b73"
 files = os.listdir(path)
 for fileName in files:
     newFilename = getSampleTime(fileName)
-    os.system("mv " + rootfolder + "/" + fileName + " " + rootfolder + "/" + newFilename)
+    os.system("mv " + path + "/" + fileName + " " + path + "/" + newFilename)
