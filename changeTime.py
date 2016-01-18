@@ -17,7 +17,8 @@ def get_sample_time(file_name):
     minutes_offset = split_list[7]
     m = minutes_offset.index("m")
     minutes_offset = minutes_offset[0:m] + minutes_offset[m+1:]
-    minutes_offset = int(minutes_offset[0:3])
+    minutes_offset = int(minutes_offset[0:m])
+
 
     hours = int(start_time[0] + start_time[1])
     minutes = int(start_time[2] + start_time[3])
@@ -45,3 +46,4 @@ if __name__ == "__main__":
 	for file_name in files:
 	    new_file_name = get_sample_time(file_name)
 	    os.system("mv " + path + "/" + file_name + " " + path + "/" + new_file_name)
+
