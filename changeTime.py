@@ -45,5 +45,5 @@ if __name__ == "__main__":
 	files = os.listdir(path)
 	for file_name in files:
 	    new_file_name = get_sample_time(file_name)
-	    os.system("mv " + path + "/" + file_name + " " + path + "/" + new_file_name)
+	    os.system("ren " + path + "\\" + file_name + " " + new_file_name)
 

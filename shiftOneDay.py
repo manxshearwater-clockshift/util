@@ -18,4 +18,4 @@ if __name__ == "__main__":
     files = os.listdir(path)
     for filename in files:
         new_filename = shift_one_day(filename)
-        os.system("mv " + path + "/" + filename + " " + path + "/" + new_filename)
+        os.system("ren " + path + "\\" + filename + " " + new_filename)
